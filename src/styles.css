@@ -163,8 +163,8 @@ body, html {
 
 /* ---- Carta ---- */
 .letter-container {
-    border-left: 2px solid rgba(0, 119, 255, 0.3);
-    padding-left: 20px;
+    border-left: 3px solid var(--electric-blue);
+    box-shadow: -10px 0 30px rgba(0, 119, 255, 0.1);
 }
 
 /* ---- Escenas scrolleables (carta, etc.) ---- */
@@ -173,6 +173,9 @@ body, html {
     justify-content: flex-start;
     padding-top: 60px;
     padding-bottom: 40px;
+    min-height: 100%;
+    height: auto;
+    background: radial-gradient(circle at bottom, #001a33, #000814, #000000);
 }
 
 /* Scrollbar invisible */
