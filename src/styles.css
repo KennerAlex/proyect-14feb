@@ -170,12 +170,15 @@ body, html {
 /* ---- Escenas scrolleables (carta, etc.) ---- */
 .scene-scrollable {
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     justify-content: flex-start;
     padding-top: 60px;
-    padding-bottom: 40px;
-    min-height: 100%;
-    height: auto;
+    padding-bottom: 100px;
     background: radial-gradient(circle at bottom, #001a33, #000814, #000000);
+}
+
+.scene-scrollable > * {
+    flex-shrink: 0;
 }
 
 /* Scrollbar invisible */
