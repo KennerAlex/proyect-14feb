@@ -163,8 +163,8 @@ body, html {
 
 /* ---- Carta ---- */
 .letter-container {
-    border-left: 3px solid var(--electric-blue);
-    box-shadow: -10px 0 30px rgba(0, 119, 255, 0.1);
+    border-left: 2px solid rgba(0, 119, 255, 0.3);
+    padding-left: 20px;
 }
 
 /* ---- Escenas scrolleables (carta, etc.) ---- */
