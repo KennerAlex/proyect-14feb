@@ -167,6 +167,24 @@ body, html {
     box-shadow: -10px 0 30px rgba(0, 119, 255, 0.1);
 }
 
+/* ---- Escenas scrolleables (carta, etc.) ---- */
+.scene-scrollable {
+    overflow-y: auto;
+    justify-content: flex-start;
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+/* Scrollbar invisible */
+.scene-scrollable::-webkit-scrollbar {
+    display: none;
+}
+
+.scene-scrollable {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
 /* ---- Partículas Fugaces ---- */
 .firefly {
     position: fixed;
