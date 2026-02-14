@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Universo de Jenifer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Música de fondo -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="assets/Elvis Presley  Can't Help Falling In Love.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Mini reproductor sutil -->
+    <div id="music-player" class="music-player">
+        <button id="music-toggle" class="music-toggle-btn" onclick="toggleMusic()">♪</button>
+        <div class="music-info">
+            <span class="music-title">Can't Help Falling In Love</span>
+            <span class="music-artist">Elvis Presley</span>
+            <div class="music-progress-bar">
+                <div id="music-progress" class="music-progress-fill"></div>
+            </div>
+            <div class="music-time">
+                <span id="music-current">0:00</span>
+                <span id="music-duration">0:00</span>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="canvas-aurora"></canvas>
+
+    <div class="progress-dots" id="dots">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+
+    <!-- ESCENA 0: EL CORAZÓN -->
+    <section class="scene active" id="scene-1">
+        <div onclick="nextScene()">
+            <svg class="heart-svg w-32 h-32 md:w-48 md:h-48" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+        </div>
+        <p class="mt-12 text-blue-200/30 tracking-[0.5em] uppercase text-[9px] animate-pulse px-4">Toca el corazón para iniciar esta aventura!</p>
+    </section>
+
+    <!-- ESCENA 1: INTRO -->
+    <section class="scene" id="scene-2">
+        <div class="max-w-md">
+            <h2 class="text-3xl md:text-5xl font-light light-text mb-6 serif italic">Un destello azul para ti...</h2>
+            <p class="text-blue-200/40 tracking-[0.3em] uppercase text-[10px] mb-12 px-4">Para Jenifer</p>
+            <button class="magic-btn" onclick="nextScene()">Explorar</button>
+        </div>
+        <div class="nav-container">
+            <button class="back-link" onclick="prevScene()">← Regresar al inicio</button>
+        </div>
+    </section>
+
+    <!-- ESCENA 2: CUALIDADES -->
+    <section class="scene" id="scene-3">
+        <h2 class="text-[10px] tracking-[0.5em] text-cyan-400 mb-10 uppercase font-bold px-4">Tus Talentos</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl w-full">
+            <div class="bento-card">
+                <h3 class="text-cyan-300 text-[9px] tracking-widest mb-2 font-bold uppercase">Determinación</h3>
+                <p class="text-xs md:text-sm text-blue-100/60">Admiro profundamente esa fuerza emprendedora con la que conquistas cada meta.</p>
+            </div>
+            <div class="bento-card">
+                <h3 class="text-cyan-300 text-[9px] tracking-widest mb-2 font-bold uppercase">Multitasking</h3>
+                <p class="text-xs md:text-sm text-blue-100/60">Eres capaz de brillar en mil cosas a la vez sin perder nunca tu esencia.</p>
+            </div>
+            <div class="bento-card md:col-span-2">
+                <p class="italic serif text-lg text-blue-100/80 px-2">"Eres el equilibrio perfecto entre una mujer trabajadora y un alma llena de alegría."</p>
+            </div>
+        </div>
+        <button class="magic-btn mt-10" onclick="nextScene()">Siguiente dimensión</button>
+        <div class="nav-container">
+            <button class="back-link" onclick="prevScene()">← Volver</button>
+        </div>
+    </section>
+
+    <!-- ESCENA 3: ARTE -->
+    <section class="scene" id="scene-4">
+        <div class="mb-8">
+            <div class="w-20 h-20 border border-cyan-500/40 rounded-full mx-auto flex items-center justify-center shadow-[0_0_20px_rgba(0,242,255,0.2)]">
+                <span class="text-3xl animate-bounce text-cyan-400">♫</span>
+            </div>
+        </div>
+        <h2 class="text-3xl md:text-5xl font-bold light-text mb-6 serif">Tu alegría es luz.</h2>
+        <p class="max-w-md text-sm md:text-base text-blue-100/60 leading-relaxed mb-10 px-4">
+            Me encantaste cuando te vi tan activa, cantando y bailando. Tienes el don de hacer que todo a tu alrededor tenga un ritmo especial.
+        </p>
+        <button class="magic-btn" onclick="nextScene()">Casi llegamos</button>
+        <div class="nav-container">
+            <button class="back-link" onclick="prevScene()">← Volver</button>
+        </div>
+    </section>
+
+    <!-- ESCENA 4: LA CARTA -->
+    <section class="scene" id="scene-5">
+        <div class="max-w-2xl bg-black/50 p-8 md:p-14 rounded-[3rem] border border-blue-500/20 backdrop-blur-2xl text-left shadow-2xl letter-container mx-4">
+            <h2 class="text-2xl md:text-3xl mb-8 serif italic text-cyan-400">Jenifer,</h2>
+            <div class="space-y-5 text-sm md:text-base text-blue-50/90 leading-relaxed serif">
+                <p>Sé que hoy el trabajo te tendrá a mil, y es justo eso lo que tanto admiro de ti: esa entrega y compromiso que le pones a todo lo que emprendes.</p>
+                <p>En este poco tiempo, te has ganado un lugar muy especial. Admiro tu energía, tu alegría y lo increíble que eres en cada pequeño detalle que haces.</p>
+                <p>Aunque hoy el deber llame, mañana el tiempo se detendrá solo para nosotros. No sabes las ganas que tengo de verte, escucharte, conocerte más.</p>
+                <p>Espero hoy te vaya super bien! Tu puedes con todo! Espero que lo que tengo preparado te sorprenda. Lo hice con todo mi corazón.</p>
+            </div>
+        </div>
+        <button class="magic-btn mt-10" onclick="nextScene()">El momento final</button>
+        <div class="nav-container">
+            <button class="back-link" onclick="prevScene()">← Volver</button>
+        </div>
+    </section>
+
+    <!-- ESCENA 5: FINAL -->
+    <section class="scene" id="scene-6">
+        <div id="flower-container" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
+        <div class="relative z-20 px-4">
+            <h2 class="text-4xl md:text-7xl font-bold light-text mb-10 serif italic">¿Iluminamos el mañana juntos?</h2>
+            <p class="text-blue-100/70 mb-12 max-w-sm mx-auto text-sm md:text-lg">
+                Hoy vas a conquistar tus metas...<br>
+                <span class="text-cyan-400 font-bold tracking-widest">¡MAÑANA CONQUISTAREMOS EL DÍA!</span>
+            </p>
+            
+            <button onclick="finalSurprise(this)" class="group relative px-14 py-5 bg-transparent overflow-hidden rounded-full transition-all duration-500 hover:scale-110">
+                <div class="absolute inset-0 bg-cyan-500 opacity-10 group-hover:opacity-30 transition-opacity"></div>
+                <div class="absolute inset-0 border border-cyan-400/40 rounded-full"></div>
+                <span class="relative z-10 text-white tracking-[0.4em] font-bold text-[10px] md:text-xs uppercase">Sorpresa Final</span>
+            </button>
+        </div>
+        <div class="nav-container">
+            <button class="back-link" onclick="prevScene()">← Volver a la carta</button>
+        </div>
+    </section>
+
+    <script src="main.js"></script>
+</body>
+</html>
