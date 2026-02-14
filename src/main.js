@@ -126,12 +126,7 @@ window.addEventListener('touchmove', e => createTrail(e.touches[0].clientX, e.to
 
 // ---- Sorpresa Final: Flores Azules ----
 function finalSurprise(btn) {
-    btn.style.position = 'relative';
-    btn.style.zIndex = '50';
-    btn.style.pointerEvents = 'none';
-    btn.innerHTML = `<div class="absolute inset-0 bg-cyan-500 opacity-20 rounded-full"></div>
-        <div class="absolute inset-0 border border-cyan-400/60 rounded-full shadow-[0_0_20px_rgba(0,242,255,0.4)]"></div>
-        <span class="relative z-10 text-cyan-400 tracking-[0.4em] font-bold text-[10px] md:text-xs uppercase animate-pulse">¡MAÑANA SERÁ MÁGICO! ✨</span>`;
+    btn.innerHTML = "<span class='text-cyan-400 text-[10px] tracking-widest'>¡MAÑANA SERÁ MÁGICO! ✨</span>";
     const container = document.getElementById('flower-container');
     for (let i = 0; i < 35; i++) {
         setTimeout(() => {
